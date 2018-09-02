@@ -1,0 +1,41 @@
+body {
+  height: 100vh;
+  font-family: 'Arvo', serif;
+  background: whitesmoke;
+  color: grey;
+  line-height: 1.5;
+  margin: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 30px;
+  border-color: black;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+h1 {
+  font-size: 4rem;
+  border-color: black;
+  border: 3px solid rgb(85, 79, 79);
+  text-align: center;
+  border-radius: 10%;
+  background-color: rgb(236, 231, 222);
+}
+
+.input-box {
+  display: block;
+  position: relative;
+  width: 500px;
+  height: 40px;
+  margin: 10px auto;
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 2rem;
+  text-align: center;
+}

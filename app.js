@@ -1,3 +1,4 @@
+// List of words with 5 letters.
 const randomWords = [
   'amigo',
   'apron',
@@ -7,14 +8,28 @@ const randomWords = [
   'texas',
   'oscar',
   'mango',
-  'apple'
+  'apple',
+  'paris',
+  'japan',
+  'idaho',
+  'south',
+  'north'
 ];
 
-const randomWordsPick = (randomWords.length * Math.random()) << 0;
-//console.log(randomWordsPick);
+// IDs from five letters
+const firstLetter = document.getElementById('first-letter');
+const secondLetter = document.getElementById('second-letter');
+const thirdLetter = document.getElementById('third-letter');
+const fourthLetter = document.getElementById('fourth-letter');
+const fifthLetter = document.getElementById('fifth-letter');
+// user input id.
+const inputWord = document.getElementById('input-word');
+// placeholder to display "correct" or "wrong" to response user input.
+const isCorrect = document.getElementById('is-correct');
 
+// function to Shuffle the randomly picked words in to 5 separate letters.
 const shuffle = word => {
-  var shuffled = '';
+  let shuffled = '';
   word = word.split('');
   while (word.length > 0) {
     shuffled += word.splice((word.length * Math.random()) << 0, 1);
@@ -22,33 +37,32 @@ const shuffle = word => {
   return shuffled;
 };
 
+// Pick one random letter from randomWords array.
+const randomWordsPick = (randomWords.length * Math.random()) << 0;
+// run shuffle function.
 const shuffledWord = shuffle(randomWords[randomWordsPick]);
 
-document.getElementById(
-  'first-letter'
-).textContent = shuffledWord[0].toUpperCase();
-document.getElementById(
-  'second-letter'
-).textContent = shuffledWord[1].toUpperCase();
-document.getElementById(
-  'third-letter'
-).textContent = shuffledWord[2].toUpperCase();
-document.getElementById(
-  'fourth-letter'
-).textContent = shuffledWord[3].toUpperCase();
-document.getElementById(
-  'fifth-letter'
-).textContent = shuffledWord[4].toUpperCase();
+// display shuffled word
+firstLetter.textContent = shuffledWord[0].toUpperCase();
+secondLetter.textContent = shuffledWord[1].toUpperCase();
+thirdLetter.textContent = shuffledWord[2].toUpperCase();
+fourthLetter.textContent = shuffledWord[3].toUpperCase();
+fifthLetter.textContent = shuffledWord[4].toUpperCase();
 
-const inputWord = document.getElementById('input-word');
-const isCorrect = document.getElementById('is-correct');
+// Event handler to user input.   To response user's input of "Enter", keyCode == 13 is used.  Display correct words if user input is incorrect.
+
 inputWord.addEventListener('keyup', function(e) {
   if (e.keyCode === 13) {
     console.log('event trigger');
     if (inputWord.value.toLowerCase() === randomWords[randomWordsPick]) {
-      isCorrect.textContent = 'Correct!';
+      isCorrect.textContent = "You're right!";
     } else {
       isCorrect.textContent = 'Wrong!';
+      firstLetter.textContent = randomWords[randomWordsPick][0].toUpperCase();
+      secondLetter.textContent = randomWords[randomWordsPick][1].toUpperCase();
+      thirdLetter.textContent = randomWords[randomWordsPick][2].toUpperCase();
+      fourthLetter.textContent = randomWords[randomWordsPick][3].toUpperCase();
+      fifthLetter.textContent = randomWords[randomWordsPick][4].toUpperCase();
     }
   }
 });
